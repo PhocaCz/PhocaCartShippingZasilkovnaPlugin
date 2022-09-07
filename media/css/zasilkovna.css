@@ -1,0 +1,21 @@
+.ph-checkout-zasilkovna-box {
+    margin-left: 1em;
+}
+
+.ph-checkout-zasilkovna-box .btn.ph-btn-zasilkovna-select-pickup-point {
+    background: #ba1a01;
+    color: #fff;
+}
+
+.ph-checkout-zasilkovna-info-box {
+    /*display: inline-block;*/
+    clear:both;
+    display: inline-flex;
+}
+.ph-checkout-zasilkovna-info-name {
+    padding: 0.5em;
+}
+
+.ph-checkout-zasilkovna-info-photo img {
+    border-radius: 3px;
+}
