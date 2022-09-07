@@ -14,7 +14,7 @@ Phoca Cart Shipping - Shipping Zasilkovna Plugin - shipping method for Phoca Car
 
 ## Project page
 
-[Phoca Cart Shipping Zasilkovna Plugin](https://www.phoca.cz/phocacart-extensions/2-plugins/6-shipping-standard-plugin)
+[Phoca Cart Shipping Zasilkovna Plugin](https://www.phoca.cz/phocacart-extensions/2-plugins/77-phoca-cart-shipping-zasilkovna-plugin)
 
 [Phoca Cart Info Page](https://www.phoca.cz/project/phocacart-joomla-ecommerce)
 
