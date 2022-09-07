@@ -2,7 +2,7 @@
 
 
 
-![Phoca Cart Shipping Zasilkovna Plugin](https://github.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/blob/master/shipping_zasilkovna.png?raw=true)
+![Phoca Cart Shipping Zasilkovna Plugin](https://github.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/blob/main/shipping_zasilkovna.png?raw=true)
 
 # Phoca Cart Shipping Zasilkovna Plugin
 

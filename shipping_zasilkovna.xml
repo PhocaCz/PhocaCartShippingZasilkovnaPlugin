@@ -67,6 +67,6 @@
 	
 
 	<updateservers>
-		<server type="extension" name="PLG_PCS_SHIPPING_ZASILKOVNA" priority="1"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/master/manifest.xml]]></server>
+		<server type="extension" name="PLG_PCS_SHIPPING_ZASILKOVNA" priority="1"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/main/manifest.xml]]></server>
 	</updateservers>
 </extension>
