@@ -9,6 +9,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 
@@ -20,9 +21,15 @@ jimport( 'joomla.html.parameter' );
 //JLog::addLogger( array('text_file' => 'com_phocacart_error_log.php'), JLog::ALL, array('com_phocacart'));
 //phocacartimport('phocacart.utils.log');
 
-JLoader::registerPrefix('Phocacart', JPATH_ADMINISTRATOR . '/components/com_phocacart/libraries/phocacart');
+if (file_exists(JPATH_ADMINISTRATOR . '/components/com_phocacart/libraries/bootstrap.php')) {
+	// Joomla 5 and newer
+	require_once(JPATH_ADMINISTRATOR . '/components/com_phocacart/libraries/bootstrap.php');
+} else {
+	// Joomla 4
+	JLoader::registerPrefix('Phocacart', JPATH_ADMINISTRATOR . '/components/com_phocacart/libraries/phocacart');
+}
 
-class plgPCSShipping_Zasilkovna extends JPlugin
+class plgPCSShipping_Zasilkovna extends CMSPlugin
 {
 	protected $name = 'shipping_zasilkovna';
 
@@ -197,13 +204,14 @@ class plgPCSShipping_Zasilkovna extends JPlugin
 		$item->params = $registry;
 
 
-
-
 		$oParams 			= array();
         $oParams['apiKey']	= '';// Not needed, don't display it in Frontend Javascript $item->params->get('api_key', '');
 		$oParams['fields']	= $this->getBranchFields();
+		$oParams['validate_pickup_point']	= $item->params->get('validate_pickup_point', 1);
 
-		$oLang   = array('PLG_PCS_SHIPPING_ZASILKOVNA_NONE' => Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_NONE'));
+		$oLang   = array(
+			'PLG_PCS_SHIPPING_ZASILKOVNA_NONE' => Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_NONE'),
+			'PLG_PCS_SHIPPING_ZASILKOVNA_ERROR_PLEASE_SELECT_PICK_UP_POINT' => Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_ERROR_PLEASE_SELECT_PICK_UP_POINT'));
 
         $document->addScriptOptions('phParamsPlgPcsZasilkovna', $oParams);
 		$document->addScriptOptions('phLangPlgPcsZasilkovna', $oLang);
@@ -276,10 +284,10 @@ class plgPCSShipping_Zasilkovna extends JPlugin
 
 	}
 
-	function onPCSgetShippingBranchInfo($context, $id, $params, $eventData) {
+	function onPCSgetShippingBranchInfo($context, $shippingMethodid, $params, $eventData) {
 
 		if (!isset($eventData['pluginname']) || isset($eventData['pluginname']) && $eventData['pluginname'] != $this->name) {
-			return false;
+			return '';
 		}
 
 		$document = Factory::getDocument();

@@ -7,12 +7,30 @@ function phSetCheckboxActive(id){
     document.getElementById(id).checked = true;
 }
 
+function phGetPacketaSelectedShippingMethod() {
+    const infoElements = document.getElementsByName('phshippingopt');
+    let selectedShippingMethod = null;
+    
+    for (let i = 0; i < infoElements.length; i++) {
+        if (infoElements[i].checked) {
+            selectedShippingMethod = infoElements[i].value;
+            break;
+        }
+    }
+    return selectedShippingMethod;
+}
+
 function showSelectedPickupPoint(point) {
 
-    
+    let selectedShippingMethodSuffix = '';
+    let selectedShippingMethod = phGetPacketaSelectedShippingMethod();
 
+    let infoElement = document.getElementById('packeta-point-info');
+    if (selectedShippingMethod !== null) {
+        selectedShippingMethodSuffix = '-' + selectedShippingMethod;
+        infoElement = document.getElementById('packeta-point-info' + selectedShippingMethodSuffix);
+    }
 
-    var infoElement = document.getElementById('packeta-point-info');
     if (point) {
         
         /* Display Branch info immediately */
@@ -35,16 +53,18 @@ function showSelectedPickupPoint(point) {
         if (phParamsPlgPcsZasilkovna['fields'].length !== 0) {
             for (let index = 0; index < phParamsPlgPcsZasilkovna['fields'].length; ++index) {
                 const element = phParamsPlgPcsZasilkovna['fields'][index];
-                var elementId = 'packeta-field-' + element;
+                var elementId = 'packeta-field-' + element + '-' + selectedShippingMethod;
 
-                if (element == 'thumbnail') {
-                    if (typeof point.photo[0].thumbnail !== 'undefined') {
-                        document.getElementById(elementId).value = point.photo[0].thumbnail;
+                if (document.getElementById(elementId)){
+                    if (element == 'thumbnail') {
+                        if (typeof point.photo[0].thumbnail !== 'undefined') {
+                            document.getElementById(elementId).value = point.photo[0].thumbnail;
+                        } else {
+                            document.getElementById(elementId).value = '';
+                        }
                     } else {
-                        document.getElementById(elementId).value = '';
+                        document.getElementById(elementId).value = point[element];
                     }
-                } else {
-                    document.getElementById(elementId).value = point[element];
                 }
                 
             }
@@ -62,3 +82,32 @@ function showSelectedPickupPoint(point) {
         }
     }
 };
+
+/* Test if method is selected */
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('.ph-checkout-shipping-save .ph-btn').onclick = function(e) {
+        
+        let selectedShippingMethodSuffix = '';
+        let selectedShippingMethod = phGetPacketaSelectedShippingMethod();
+        
+        if (selectedShippingMethod !== null) {
+            selectedShippingMethodSuffix = '-' + selectedShippingMethod;
+        }
+        
+        let elementId = 'packeta-field-id' + selectedShippingMethodSuffix;
+        let elementDocId = document.getElementById(elementId);
+        let elementDocIdValue = elementDocId.value;
+
+        let packetaCheckbox = document.getElementById('packeta-checkbox-id' + selectedShippingMethodSuffix).value;
+        let packetaCheckboxChecked = document.getElementById(packetaCheckbox).checked;
+
+        if (phParamsPlgPcsZasilkovna['validate_pickup_point'] == 1 && packetaCheckboxChecked && elementDocIdValue == '') {
+            e.preventDefault();
+            alert(phLangPlgPcsZasilkovna['PLG_PCS_SHIPPING_ZASILKOVNA_ERROR_PLEASE_SELECT_PICK_UP_POINT']);
+            return false;
+        }
+        
+    };
+});
+
+

@@ -8,9 +8,9 @@
  */
 
 use Joomla\CMS\Language\Text;
-
+defined('_JEXEC') or die;
 echo '<div class="ph-cb"></div>';
-echo '<div class="ph-checkout-zasilkovna-info-box">';
+echo '<div class="ph-checkout-shipping-info-box ph-checkout-zasilkovna-info-box">';
 
 $name = '';
 if (isset($params['name'])) {

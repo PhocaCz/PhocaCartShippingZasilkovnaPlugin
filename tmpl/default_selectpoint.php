@@ -8,21 +8,24 @@
  */
 
 use Joomla\CMS\Language\Text;
-
+defined('_JEXEC') or die;
 // When selecting point, make the checkbox active
 $idCheckbox = 'phshippingopt'.$item->id;
 
 ?>
-<div class="ph-checkout-zasilkovna-box">
+<div class="ph-checkout-shipping-additional-info ph-checkout-zasilkovna-box">
     <input type="button" class="btn ph-btn-zasilkovna-select-pickup-point" onclick="Packeta.Widget.pick('<?php echo $oParams['apiKey'] ?>', showSelectedPickupPoint); phSetCheckboxActive('<?php echo $idCheckbox ?>')" value="<?php echo Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_SELECT_PICK_UP_POINT'); ?>">
-    <div><?php echo Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_SELECTED_POINT'); ?>: <div class="ph-checkout-zasilkovna-info-box" id="packeta-point-info"><?php echo Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_NONE'); ?></div>
+    <input type="hidden" id="packeta-checkbox-id-<?php echo $item->id ?>" value="<?php echo $idCheckbox ?>" >
+
+    <div class="ph-checkout-zasilkovna-info-container"><div class="ph-checkout-zasilkovna-info-label"><?php echo Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_SELECTED_POINT'); ?>:</div> <div class="ph-checkout-shipping-info-box ph-checkout-zasilkovna-info-box" id="packeta-point-info-<?php echo $item->id ?>"><?php echo Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_NONE'); ?></div>
 
         <?php
         if (!empty($oParams['fields'])) {
             foreach($oParams['fields'] as $k => $v) {
-                echo '<input type="hidden" id="packeta-field-'.$v.'" name="phshippingmethodfield['.$v.']" value="" />';
+                echo '<input type="hidden" id="packeta-field-'.$v.'-'.$item->id.'" name="phshippingmethodfield['.$item->id.']['.$v.']" value="" />';
             }
         }
+
 
         ?>
     </div>

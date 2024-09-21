@@ -9,7 +9,7 @@
 
 use Joomla\CMS\Language\Text;
 
-
+defined('_JEXEC') or die;
 // SHIPPING POINT NAME
 $name = '';
 if (isset($paramsShipping['name'])) {

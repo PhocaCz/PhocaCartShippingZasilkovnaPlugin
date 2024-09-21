@@ -10,7 +10,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
-
+defined('_JEXEC') or die;
 $eA = array();
 $price = new PhocacartPrice();
 
@@ -93,15 +93,15 @@ if (!empty($orders)) {
 
         $unitWeight = $v->unit_weight;
         $weightKg = $defaultWeight;// this is weight in KG
-
+        $weightInStoredUnit = $defaultWeight;
 
         if (isset($additionalParameters['totalWeight'][$id]) && (int)$additionalParameters['totalWeight'][$id] > 0) {
             // Weight set by the form field in orders view
-            $weightKg =  $additionalParameters['totalWeight'][$id];
+            $weightKg = $weightInStoredUnit =  $additionalParameters['totalWeight'][$id];
             $weightKg = PhocacartUtils::convertWeightToKg($weightKg, $unitWeight);
         } if (isset($paramsShipping->total_weight) && $paramsShipping->total_weight > 0) {
             // If not, try to find it in total weight
-            $weightKg = $paramsShipping->total_weight;
+            $weightKg = $weightInStoredUnit = $paramsShipping->total_weight;
             $weightKg = PhocacartUtils::convertWeightToKg($weightKg, $unitWeight);
         }
 
@@ -110,7 +110,8 @@ if (!empty($orders)) {
         }
 
         if ($weightKg != '') {
-            $changeTotalWeight = $weightKg;
+            //$changeTotalWeight = $weightKg;
+            $changeTotalWeight = $weightInStoredUnit;
         }
 
         // Destination
