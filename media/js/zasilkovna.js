@@ -85,7 +85,8 @@ function showSelectedPickupPoint(point) {
 
 /* Test if method is selected */
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('.ph-checkout-shipping-save .ph-btn').onclick = function(e) {
+    let button = document.querySelector('.ph-checkout-shipping-save .ph-btn');
+    button.addEventListener('click', function(e) {
         
         let selectedShippingMethodSuffix = '';
         let selectedShippingMethod = phGetPacketaSelectedShippingMethod();
@@ -96,18 +97,21 @@ document.addEventListener("DOMContentLoaded", function() {
         
         let elementId = 'packeta-field-id' + selectedShippingMethodSuffix;
         let elementDocId = document.getElementById(elementId);
-        let elementDocIdValue = elementDocId.value;
+        if (elementDocId) {
+            let elementDocIdValue = elementDocId.value;
 
-        let packetaCheckbox = document.getElementById('packeta-checkbox-id' + selectedShippingMethodSuffix).value;
-        let packetaCheckboxChecked = document.getElementById(packetaCheckbox).checked;
+            let packetaCheckbox = document.getElementById('packeta-checkbox-id' + selectedShippingMethodSuffix).value;
+            let packetaCheckboxChecked = document.getElementById(packetaCheckbox).checked;
 
-        if (phParamsPlgPcsZasilkovna[selectedShippingMethod]['validate_pickup_point'] == 1 && packetaCheckboxChecked && elementDocIdValue == '') {
-            e.preventDefault();
-            alert(phLangPlgPcsZasilkovna['PLG_PCS_SHIPPING_ZASILKOVNA_ERROR_PLEASE_SELECT_PICK_UP_POINT']);
-            return false;
+            if (phParamsPlgPcsZasilkovna[selectedShippingMethod]['validate_pickup_point'] == 1 && packetaCheckboxChecked && elementDocIdValue == '') {
+                e.preventDefault();
+                alert(phLangPlgPcsZasilkovna['PLG_PCS_SHIPPING_ZASILKOVNA_ERROR_PLEASE_SELECT_PICK_UP_POINT']);
+                return false;
+            }
         }
+        return;
         
-    };
+    });
 });
 
 
