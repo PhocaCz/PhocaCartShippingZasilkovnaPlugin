@@ -204,10 +204,11 @@ class plgPCSShipping_Zasilkovna extends CMSPlugin
 		$item->params = $registry;
 
 
+		$id					= (int)$item->id;
 		$oParams 			= array();
-        $oParams['apiKey']	= '';// Not needed, don't display it in Frontend Javascript $item->params->get('api_key', '');
-		$oParams['fields']	= $this->getBranchFields();
-		$oParams['validate_pickup_point']	= $item->params->get('validate_pickup_point', 1);
+        $oParams[$id]['apiKey']	= '';// Not needed, don't display it in Frontend Javascript $item->params->get('api_key', '');
+		$oParams[$id]['fields']	= $this->getBranchFields();
+		$oParams[$id]['validate_pickup_point']	= $item->params->get('validate_pickup_point', 1);
 
 		$oLang   = array(
 			'PLG_PCS_SHIPPING_ZASILKOVNA_NONE' => Text::_('PLG_PCS_SHIPPING_ZASILKOVNA_NONE'),

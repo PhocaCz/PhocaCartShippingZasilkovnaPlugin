@@ -31,7 +31,7 @@
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/releases/download/5.0.2/plg_pcs_shipping_zasilkovna_v5.0.2.zip</downloadurl>
 		</downloads>
-		<sha512>6b324f07dc481be44c6b5655263a30d1555319bd7351ac4baff8f7cd241043223643e6be6e5644640b88237722e3db2eda6e30b918d06d383b52c41c837e994e</sha512>
+		<sha512>80397f3e31bbf9a64190faf22d3859053c842bd11ff3c82862fc1245379b391616ae8b19c103d3b8ed32504ea3bf9aef545e549022c2b5a9372142ab285ba564</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>

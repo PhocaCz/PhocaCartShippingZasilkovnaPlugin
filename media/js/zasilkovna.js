@@ -1,6 +1,5 @@
 var phParamsPlgPcsZasilkovna = Joomla.getOptions('phParamsPlgPcsZasilkovna');
 var phLangPlgPcsZasilkovna = Joomla.getOptions('phLangPlgPcsZasilkovna');
-var packetaApiKey = phParamsPlgPcsZasilkovna['apiKey'];
 
 
 function phSetCheckboxActive(id){
@@ -31,6 +30,8 @@ function showSelectedPickupPoint(point) {
         infoElement = document.getElementById('packeta-point-info' + selectedShippingMethodSuffix);
     }
 
+    //let packetaApiKey = phParamsPlgPcsZasilkovna[selectedShippingMethod]['apiKey'];
+
     if (point) {
         
         /* Display Branch info immediately */
@@ -50,11 +51,10 @@ function showSelectedPickupPoint(point) {
         infoElement.innerHTML = info;
 
         /* Add Branch info to form fields - to store them */
-        if (phParamsPlgPcsZasilkovna['fields'].length !== 0) {
-            for (let index = 0; index < phParamsPlgPcsZasilkovna['fields'].length; ++index) {
-                const element = phParamsPlgPcsZasilkovna['fields'][index];
+        if (phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'].length !== 0) {
+            for (let index = 0; index < phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'].length; ++index) {
+                const element = phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'][index];
                 var elementId = 'packeta-field-' + element + '-' + selectedShippingMethod;
-
                 if (document.getElementById(elementId)){
                     if (element == 'thumbnail') {
                         if (typeof point.photo[0].thumbnail !== 'undefined') {
@@ -73,9 +73,9 @@ function showSelectedPickupPoint(point) {
     } else {
         infoElement.innerText = phLangPlgPcsZasilkovna['PLG_PCS_SHIPPING_ZASILKOVNA_NONE'];
         /* Add Branch info to form fields - clear all values */
-        if (phParamsPlgPcsZasilkovna['fields'].length !== 0) {
-            for (let index = 0; index < phParamsPlgPcsZasilkovna['fields'].length; ++index) {
-                const element = phParamsPlgPcsZasilkovna['fields'][index];
+        if (phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'].length !== 0) {
+            for (let index = 0; index < phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'].length; ++index) {
+                const element = phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'][index];
                 var elementId = 'packeta-field-' + element;
                 document.getElementById(elementId).value = '';
             }
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let packetaCheckbox = document.getElementById('packeta-checkbox-id' + selectedShippingMethodSuffix).value;
         let packetaCheckboxChecked = document.getElementById(packetaCheckbox).checked;
 
-        if (phParamsPlgPcsZasilkovna['validate_pickup_point'] == 1 && packetaCheckboxChecked && elementDocIdValue == '') {
+        if (phParamsPlgPcsZasilkovna[selectedShippingMethod]['validate_pickup_point'] == 1 && packetaCheckboxChecked && elementDocIdValue == '') {
             e.preventDefault();
             alert(phLangPlgPcsZasilkovna['PLG_PCS_SHIPPING_ZASILKOVNA_ERROR_PLEASE_SELECT_PICK_UP_POINT']);
             return false;

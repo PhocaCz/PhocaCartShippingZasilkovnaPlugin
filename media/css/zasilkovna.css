@@ -15,6 +15,29 @@
     padding: 0;
     padding-left: 0.25em;
  }
+
+.ph-checkout-zasilkovna-box {
+    container-type: inline-size;
+    container-name: phCheckoutZasilkovnaBox;
+}
+
+@container phCheckoutZasilkovnaBox (max-width: 15em) {
+    .ph-checkout-shipping-info-box.ph-checkout-zasilkovna-info-box {
+        display:block;
+    }
+}
+
+.ph-checkout-shipping-row-item {
+    container-type: inline-size;
+    container-name: phCheckoutShippingRowItem;
+}
+
+@container phCheckoutShippingRowItem (max-width: 34em) {
+    .ph-checkout-shipping-info-box.ph-checkout-zasilkovna-info-box {
+        display: block;
+    }
+}
+
 .ph-checkout-zasilkovna-info-name {
     padding: 0.5em;
 }
