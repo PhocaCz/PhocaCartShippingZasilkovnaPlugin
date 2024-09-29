@@ -26,12 +26,12 @@
 		<element>shipping_zasilkovna</element>
 		<folder>pcs</folder>
 		<type>plugin</type>
-		<version>5.0.2</version>
-		<infourl title="Phoca Cart Shipping Zasilkovna Plugin 5.0.2">https://www.phoca.cz/</infourl>
+		<version>5.0.3</version>
+		<infourl title="Phoca Cart Shipping Zasilkovna Plugin 5.0.3">https://www.phoca.cz/</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/releases/download/5.0.2/plg_pcs_shipping_zasilkovna_v5.0.2.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaCartShippingZasilkovnaPlugin/releases/download/5.0.3/plg_pcs_shipping_zasilkovna_v5.0.3.zip</downloadurl>
 		</downloads>
-		<sha512>2b6ec63607c727a33aab513c9f6e840a13896ee2ef9bcfbf1384748b73c863fa83aa8743cc86a63eadf942766b5e413e038303b7fd3906ef9e4c55bdbba8ce78</sha512>
+		<sha512>44e00ea0bcfc6c1f8853b4c4a7f7a88165674172a53bef3d74cb03896045584938cfa7e5a7edf770766052753270ded3c746d807a7cb1569b74cf2a278ef066b</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>

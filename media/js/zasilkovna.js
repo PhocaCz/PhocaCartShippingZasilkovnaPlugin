@@ -76,7 +76,7 @@ function showSelectedPickupPoint(point) {
         if (phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'].length !== 0) {
             for (let index = 0; index < phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'].length; ++index) {
                 const element = phParamsPlgPcsZasilkovna[selectedShippingMethod]['fields'][index];
-                var elementId = 'packeta-field-' + element;
+                var elementId = 'packeta-field-' + element + '-' + selectedShippingMethod;
                 document.getElementById(elementId).value = '';
             }
         }

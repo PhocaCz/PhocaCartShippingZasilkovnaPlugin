@@ -60,7 +60,7 @@ Phoca Cart Shipping - Shipping Zasilkovna Plugin - shipping method for Phoca Car
 
 ## Version (Joomla! 5.x)
 
-5.0.2
+5.0.3
 
 
 
