@@ -5,23 +5,24 @@
 .ph-checkout-zasilkovna-box .btn.ph-btn-zasilkovna-select-pickup-point {
     background: #ba1a01;
     color: #fff;
+    margin: 0.25em 0;
 }
 
 .ph-checkout-shipping-info-box.ph-checkout-zasilkovna-info-box {
     /*display: inline-block;*/
     clear:both;
-    display: inline-flex;
+    display: block;
     margin: 0;
     padding: 0;
     padding-left: 0.25em;
  }
-
+/*
 .ph-checkout-zasilkovna-box {
     container-type: inline-size;
     container-name: phCheckoutZasilkovnaBox;
 }
 
-@container phCheckoutZasilkovnaBox (max-width: 15em) {
+@container phCheckoutZasilkovnaBox (max-width: 46em) {
     .ph-checkout-shipping-info-box.ph-checkout-zasilkovna-info-box {
         display:block;
     }
@@ -32,19 +33,19 @@
     container-name: phCheckoutShippingRowItem;
 }
 
-@container phCheckoutShippingRowItem (max-width: 34em) {
+@container phCheckoutShippingRowItem (max-width: 46em) {
     .ph-checkout-shipping-info-box.ph-checkout-zasilkovna-info-box {
         display: block;
     }
 }
-
+*/
 .ph-checkout-zasilkovna-info-name {
     padding: 0.5em;
 }
 .ph-checkout-zasilkovna-info-container {
     margin-top: 0.5em;
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;
+    flex-wrap: wrap;*/
 }
 .ph-checkout-zasilkovna-info-label {
     padding-top: 0;
